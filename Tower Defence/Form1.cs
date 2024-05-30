@@ -14,14 +14,23 @@ namespace Tower_Defence
 {
     public partial class Form1 : Form
     {
+        int screen = 0;
+        int time = 600;
+        int loadingBar;
+
+        Pen blackPen = new Pen(Color.Black, 3);
+        SolidBrush redBrush = new SolidBrush(Color.Red);
+
+        Random randGen = new Random();
+
+        int randValue = 0;
         public Form1()
         {
             InitializeComponent();
         }
-
-        private void Form1_Shown(object sender, EventArgs e)
+        private void menuTimer_Tick(object sender, EventArgs e)
         {
-            //Make animation
+
 
             //Show Menu Screen
 
@@ -35,6 +44,7 @@ namespace Tower_Defence
 
             //Check to see if exit button has been pressed
 
+            Refresh();
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -115,7 +125,54 @@ namespace Tower_Defence
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
+            //Make animation
+            if (screen == 0)
+            {
+                if (time > 0 && loadingBar < 300)
+                {
+                    this.BackColor = (Color.White);
+                    e.Graphics.FillRectangle(redBrush, 200, 300, loadingBar, 50);
+                    e.Graphics.DrawRectangle(blackPen, 200, 300, 375, 50);
 
+
+                    loadingBar++;
+                    time--;
+                }
+                else if (time > 0 && loadingBar < 303)
+                {
+                    this.BackColor = (Color.White);
+                    e.Graphics.FillRectangle(redBrush, 200, 300, loadingBar, 50);
+                    e.Graphics.DrawRectangle(blackPen, 200, 300, 375, 50);
+
+                    randValue = randGen.Next(0, 101);
+
+                    if (randValue > 95)
+                    {
+                        loadingBar++;
+                    }
+                    time--;
+                }
+                else if (time > 0 && loadingBar < 375)
+                {
+                    this.BackColor = (Color.White);
+                    e.Graphics.FillRectangle(redBrush, 200, 300, loadingBar, 50);
+                    e.Graphics.DrawRectangle(blackPen, 200, 300, 375, 50);
+
+
+                    loadingBar = loadingBar + 10;
+                    time--;
+                }
+                else
+                {
+                    screen = 1;
+                    Thread.Sleep(500);
+                    e.Graphics.Clear(Color.White);
+                }
+            }
+            else if (screen == 1)
+            {
+                
+            }
+        }
     }
 }

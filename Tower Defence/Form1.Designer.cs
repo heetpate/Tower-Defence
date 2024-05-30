@@ -35,7 +35,8 @@
             this.mediumButton = new System.Windows.Forms.Button();
             this.hardButton = new System.Windows.Forms.Button();
             this.insaneButton = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.menuTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // gameTimer
@@ -51,6 +52,7 @@
             this.titleLabel.Size = new System.Drawing.Size(35, 13);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "label1";
+            this.titleLabel.Visible = false;
             // 
             // easyButton
             // 
@@ -60,6 +62,7 @@
             this.easyButton.TabIndex = 1;
             this.easyButton.Text = "button1";
             this.easyButton.UseVisualStyleBackColor = true;
+            this.easyButton.Visible = false;
             // 
             // mediumButton
             // 
@@ -69,6 +72,7 @@
             this.mediumButton.TabIndex = 2;
             this.mediumButton.Text = "button2";
             this.mediumButton.UseVisualStyleBackColor = true;
+            this.mediumButton.Visible = false;
             // 
             // hardButton
             // 
@@ -78,6 +82,7 @@
             this.hardButton.TabIndex = 3;
             this.hardButton.Text = "button3";
             this.hardButton.UseVisualStyleBackColor = true;
+            this.hardButton.Visible = false;
             // 
             // insaneButton
             // 
@@ -87,30 +92,38 @@
             this.insaneButton.TabIndex = 4;
             this.insaneButton.Text = "button4";
             this.insaneButton.UseVisualStyleBackColor = true;
+            this.insaneButton.Visible = false;
             // 
-            // button5
+            // exitButton
             // 
-            this.button5.Location = new System.Drawing.Point(665, 37);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.exitButton.Location = new System.Drawing.Point(665, 37);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 5;
+            this.exitButton.Text = "button5";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Visible = false;
+            // 
+            // menuTimer
+            // 
+            this.menuTimer.Enabled = true;
+            this.menuTimer.Interval = 10;
+            this.menuTimer.Tick += new System.EventHandler(this.menuTimer_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button5);
+            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.insaneButton);
             this.Controls.Add(this.hardButton);
             this.Controls.Add(this.mediumButton);
             this.Controls.Add(this.easyButton);
             this.Controls.Add(this.titleLabel);
+            this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Tower Defence";
-            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -125,7 +138,8 @@
         private System.Windows.Forms.Button mediumButton;
         private System.Windows.Forms.Button hardButton;
         private System.Windows.Forms.Button insaneButton;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Timer menuTimer;
     }
 }
 
