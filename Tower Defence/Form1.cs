@@ -18,6 +18,9 @@ namespace Tower_Defence
         int time = 600;
         int loadingBar;
 
+        int lives;
+        int money;
+
         Pen blackPen = new Pen(Color.Black, 3);
         SolidBrush redBrush = new SolidBrush(Color.Red);
 
@@ -164,15 +167,105 @@ namespace Tower_Defence
                 }
                 else
                 {
-                    screen = 1;
+                    
                     Thread.Sleep(500);
                     e.Graphics.Clear(Color.White);
+                    screen = 1;
                 }
             }
             else if (screen == 1)
             {
-                
+                this.BackColor = Color.LightBlue;
+                easyButton.Visible = true;
+                mediumButton.Visible = true;
+                hardButton.Visible = true;
+                insaneButton.Visible = true;
+                exitButton.Visible = true;
+                titleLabel.Visible = true;
             }
+        }
+
+        private void easyButton_MouseHover(object sender, EventArgs e)
+        {
+            easyButton.BackColor = Color.Lime;
+        }
+
+        private void easyButton_MouseLeave(object sender, EventArgs e)
+        {
+            easyButton.BackColor = Color.Black;
+        }
+
+        private void mediumButton_MouseHover(object sender, EventArgs e)
+        {
+            mediumButton.BackColor = Color.Yellow;
+        }
+
+        private void mediumButton_MouseLeave(object sender, EventArgs e)
+        {
+            mediumButton.BackColor = Color.Black;
+        }
+
+        private void hardButton_MouseHover(object sender, EventArgs e)
+        {
+            hardButton.BackColor = Color.Orange;
+        }
+
+        private void hardButton_MouseLeave(object sender, EventArgs e)
+        {
+            hardButton.BackColor = Color.Black;
+        }
+
+        private void insaneButton_MouseHover(object sender, EventArgs e)
+        {
+            insaneButton.BackColor = Color.Red;
+        }
+
+        private void insaneButton_MouseLeave(object sender, EventArgs e)
+        {
+            insaneButton.BackColor = Color.Black;
+        }
+
+        private void exitButton_MouseHover(object sender, EventArgs e)
+        {
+            exitButton.BackColor = Color.Red;
+        }
+
+        private void exitButton_MouseLeave(object sender, EventArgs e)
+        {
+            exitButton.BackColor = Color.Black;
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void easyButton_Click(object sender, EventArgs e)
+        {
+            lives = 200;
+            money = 1200;
+            screen = 2;
+        }
+
+        private void mediumButton_Click(object sender, EventArgs e)
+        {
+            lives = 150;
+            money = 1000;
+            screen = 2;
+        }
+
+        private void hardButton_Click(object sender, EventArgs e)
+        {
+            lives = 100;
+            money = 800;
+            screen = 2;
+        }
+
+        private void insaneButton_Click(object sender, EventArgs e)
+        {
+            lives = 1;
+            money = 600;
+            screen = 2;
         }
     }
 }
