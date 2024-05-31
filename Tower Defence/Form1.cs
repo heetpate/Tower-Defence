@@ -199,7 +199,6 @@ namespace Tower_Defence
 
                 livesLabel.Text = $"Lives : {lives}";
                 moneyLabel.Text = $"Money : {money}";
-
             }
         }
 
