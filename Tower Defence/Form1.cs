@@ -23,6 +23,7 @@ namespace Tower_Defence
 
         Pen blackPen = new Pen(Color.Black, 3);
         SolidBrush redBrush = new SolidBrush(Color.Red);
+        SolidBrush lightGrayBrush = new SolidBrush(Color.LightGray);
 
         Random randGen = new Random();
 
@@ -175,13 +176,30 @@ namespace Tower_Defence
             }
             else if (screen == 1)
             {
-                this.BackColor = Color.LightBlue;
+                this.BackColor = Color.White;
                 easyButton.Visible = true;
                 mediumButton.Visible = true;
                 hardButton.Visible = true;
                 insaneButton.Visible = true;
                 exitButton.Visible = true;
                 titleLabel.Visible = true;
+            }
+            else if (screen == 2)
+            {
+                this.BackColor = Color.White;
+                easyButton.Visible = false;
+                mediumButton.Visible = false;
+                hardButton.Visible = false;
+                insaneButton.Visible = false;
+                exitButton.Visible = false;
+                titleLabel.Visible = false;
+                e.Graphics.FillRectangle(lightGrayBrush, 675, 80, 40, 90);
+                livesLabel.Visible = true;
+                moneyLabel.Visible = true;
+
+                livesLabel.Text = $"Lives : {lives}";
+                moneyLabel.Text = $"Money : {money}";
+
             }
         }
 
@@ -267,5 +285,7 @@ namespace Tower_Defence
             money = 600;
             screen = 2;
         }
+
+        
     }
 }

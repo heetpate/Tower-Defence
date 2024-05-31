@@ -37,6 +37,8 @@
             this.insaneButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.menuTimer = new System.Windows.Forms.Timer(this.components);
+            this.moneyLabel = new System.Windows.Forms.Label();
+            this.livesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -147,11 +149,39 @@
             this.menuTimer.Interval = 10;
             this.menuTimer.Tick += new System.EventHandler(this.menuTimer_Tick);
             // 
+            // moneyLabel
+            // 
+            this.moneyLabel.BackColor = System.Drawing.Color.Transparent;
+            this.moneyLabel.Font = new System.Drawing.Font("Perpetua Titling MT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moneyLabel.ForeColor = System.Drawing.Color.Black;
+            this.moneyLabel.Location = new System.Drawing.Point(172, 5);
+            this.moneyLabel.Name = "moneyLabel";
+            this.moneyLabel.Size = new System.Drawing.Size(304, 47);
+            this.moneyLabel.TabIndex = 6;
+            this.moneyLabel.Text = "Money : ";
+            this.moneyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.moneyLabel.Visible = false;
+            // 
+            // livesLabel
+            // 
+            this.livesLabel.BackColor = System.Drawing.Color.Transparent;
+            this.livesLabel.Font = new System.Drawing.Font("Perpetua Titling MT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livesLabel.ForeColor = System.Drawing.Color.Black;
+            this.livesLabel.Location = new System.Drawing.Point(7, 5);
+            this.livesLabel.Name = "livesLabel";
+            this.livesLabel.Size = new System.Drawing.Size(165, 47);
+            this.livesLabel.TabIndex = 7;
+            this.livesLabel.Text = "Lives : ";
+            this.livesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.livesLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.livesLabel);
+            this.Controls.Add(this.moneyLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.insaneButton);
             this.Controls.Add(this.hardButton);
@@ -177,6 +207,8 @@
         private System.Windows.Forms.Button insaneButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Timer menuTimer;
+        private System.Windows.Forms.Label moneyLabel;
+        private System.Windows.Forms.Label livesLabel;
     }
 }
 
