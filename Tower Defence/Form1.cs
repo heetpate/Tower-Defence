@@ -14,7 +14,12 @@ namespace Tower_Defence
 {
     public partial class Form1 : Form
     {
-        int screen = 0;
+
+        Rectangle firstTurn = new Rectangle(675, 195, 30, 30);
+        Rectangle secondTurn = new Rectangle(500, 170, 30, 30);
+        Rectangle thirdTurn = new Rectangle(525, 75, 30, 30);
+
+        int screen = 2;
         int time = 600;
         int loadingBar;
 
@@ -23,7 +28,7 @@ namespace Tower_Defence
 
         Pen blackPen = new Pen(Color.Black, 3);
         SolidBrush redBrush = new SolidBrush(Color.Red);
-        SolidBrush lightGrayBrush = new SolidBrush(Color.LightGray);
+        SolidBrush brownBrush = new SolidBrush(Color.Peru);
 
         Random randGen = new Random();
 
@@ -193,12 +198,38 @@ namespace Tower_Defence
                 insaneButton.Visible = false;
                 exitButton.Visible = false;
                 titleLabel.Visible = false;
-                e.Graphics.FillRectangle(lightGrayBrush, 675, 80, 40, 90);
                 livesLabel.Visible = true;
                 moneyLabel.Visible = true;
 
                 livesLabel.Text = $"Lives : {lives}";
                 moneyLabel.Text = $"Money : {money}";
+
+                //Draw Path
+                e.Graphics.FillRectangle(brownBrush, 675, 0, 30, 170);
+                e.Graphics.FillRectangle(brownBrush, 525, 170, 180, 30);
+                e.Graphics.FillRectangle(brownBrush, 525, 100, 30, 70);
+                e.Graphics.FillRectangle(brownBrush, 145, 100, 410, 30);
+                e.Graphics.FillRectangle(brownBrush, 145, 100, 30, 180);
+                e.Graphics.FillRectangle(brownBrush, 145, 250, 80, 30);
+                e.Graphics.FillRectangle(brownBrush, 225, 180, 30, 100);
+                e.Graphics.FillRectangle(brownBrush, 225, 180, 100, 30);
+                e.Graphics.FillRectangle(brownBrush, 325, 180, 30, 145);
+                e.Graphics.FillRectangle(brownBrush, 355, 295, 200, 30);
+                e.Graphics.FillRectangle(brownBrush, 525, 245, 30, 50);
+                e.Graphics.FillRectangle(brownBrush, 555, 245, 180, 30);
+                e.Graphics.FillRectangle(brownBrush, 715, 245, 30, 135);
+                e.Graphics.FillRectangle(brownBrush, 250, 380, 495, 30);
+                e.Graphics.FillRectangle(brownBrush, 250, 320, 30, 60);
+                e.Graphics.FillRectangle(brownBrush, 145, 320, 105, 30);
+                e.Graphics.FillRectangle(brownBrush, 145, 320, 30, 155);
+
+                e.Graphics.DrawRectangle(blackPen, firstTurn);
+                e.Graphics.DrawRectangle(blackPen, secondTurn);
+                e.Graphics.DrawRectangle(blackPen, thirdTurn);
+
+                e.Graphics.DrawRectangle(blackPen, 0, 75, 100, 375);
+
+
             }
         }
 

@@ -48,7 +48,7 @@
             // 
             // titleLabel
             // 
-            this.titleLabel.Font = new System.Drawing.Font("Stencil", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.Red;
             this.titleLabel.Location = new System.Drawing.Point(0, 275);
             this.titleLabel.Name = "titleLabel";
@@ -62,7 +62,7 @@
             // 
             this.easyButton.BackColor = System.Drawing.Color.Black;
             this.easyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.easyButton.Font = new System.Drawing.Font("Perpetua Titling MT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.easyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.easyButton.ForeColor = System.Drawing.Color.White;
             this.easyButton.Location = new System.Drawing.Point(12, 360);
             this.easyButton.Name = "easyButton";
@@ -79,7 +79,7 @@
             // 
             this.mediumButton.BackColor = System.Drawing.Color.Black;
             this.mediumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mediumButton.Font = new System.Drawing.Font("Perpetua Titling MT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mediumButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mediumButton.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.mediumButton.Location = new System.Drawing.Point(211, 360);
             this.mediumButton.Name = "mediumButton";
@@ -96,7 +96,7 @@
             // 
             this.hardButton.BackColor = System.Drawing.Color.Black;
             this.hardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hardButton.Font = new System.Drawing.Font("Perpetua Titling MT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hardButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hardButton.ForeColor = System.Drawing.Color.White;
             this.hardButton.Location = new System.Drawing.Point(413, 360);
             this.hardButton.Name = "hardButton";
@@ -113,7 +113,7 @@
             // 
             this.insaneButton.BackColor = System.Drawing.Color.Black;
             this.insaneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.insaneButton.Font = new System.Drawing.Font("Perpetua Titling MT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.insaneButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.insaneButton.ForeColor = System.Drawing.Color.White;
             this.insaneButton.Location = new System.Drawing.Point(613, 360);
             this.insaneButton.Name = "insaneButton";
@@ -130,7 +130,7 @@
             // 
             this.exitButton.BackColor = System.Drawing.Color.Black;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font("Perpetua Titling MT", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.Location = new System.Drawing.Point(691, 10);
             this.exitButton.Name = "exitButton";
@@ -152,7 +152,7 @@
             // moneyLabel
             // 
             this.moneyLabel.BackColor = System.Drawing.Color.Transparent;
-            this.moneyLabel.Font = new System.Drawing.Font("Perpetua Titling MT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.moneyLabel.ForeColor = System.Drawing.Color.Black;
             this.moneyLabel.Location = new System.Drawing.Point(172, 5);
             this.moneyLabel.Name = "moneyLabel";
@@ -165,7 +165,7 @@
             // livesLabel
             // 
             this.livesLabel.BackColor = System.Drawing.Color.Transparent;
-            this.livesLabel.Font = new System.Drawing.Font("Perpetua Titling MT", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.livesLabel.ForeColor = System.Drawing.Color.Black;
             this.livesLabel.Location = new System.Drawing.Point(7, 5);
             this.livesLabel.Name = "livesLabel";
@@ -179,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 461);
+            this.ClientSize = new System.Drawing.Size(800, 475);
             this.Controls.Add(this.livesLabel);
             this.Controls.Add(this.moneyLabel);
             this.Controls.Add(this.exitButton);
