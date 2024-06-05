@@ -18,6 +18,22 @@ namespace Tower_Defence
         Rectangle firstTurn = new Rectangle(675, 195, 30, 30);
         Rectangle secondTurn = new Rectangle(500, 170, 30, 30);
         Rectangle thirdTurn = new Rectangle(525, 75, 30, 30);
+        Rectangle fourthTurn = new Rectangle(120, 100, 30, 30);
+        Rectangle fifthTurn = new Rectangle(145, 275, 30, 30);
+        Rectangle sixthTurn = new Rectangle(250, 250, 30, 30);
+        Rectangle seventhTurn = new Rectangle(225, 155, 30, 30);
+        Rectangle eighthTurn = new Rectangle(350, 180, 30, 30);
+        Rectangle ninethTurn = new Rectangle(325, 320, 30, 30);
+        Rectangle tenthTurn = new Rectangle(550, 295, 30, 30);
+        Rectangle eleventhTurn = new Rectangle(525, 220, 30, 30);
+        Rectangle twelvethTurn = new Rectangle(740, 245, 30, 30);
+        Rectangle thirteenthTurn = new Rectangle(715, 405, 30, 30);
+        Rectangle fourteenthTurn = new Rectangle(225, 380, 30, 30);
+        Rectangle fifteenthTurn = new Rectangle(250, 295, 30, 30);
+        Rectangle sixteenthTurn = new Rectangle(120, 320, 30, 30);
+
+        //string[] waves = new string[14];
+        //string[1] = "Wave 1"
 
         int screen = 2;
         int time = 600;
@@ -226,6 +242,19 @@ namespace Tower_Defence
                 e.Graphics.DrawRectangle(blackPen, firstTurn);
                 e.Graphics.DrawRectangle(blackPen, secondTurn);
                 e.Graphics.DrawRectangle(blackPen, thirdTurn);
+                e.Graphics.DrawRectangle(blackPen, fourthTurn);
+                e.Graphics.DrawRectangle(blackPen, fifthTurn);
+                e.Graphics.DrawRectangle(blackPen, sixthTurn);
+                e.Graphics.DrawRectangle(blackPen, seventhTurn);
+                e.Graphics.DrawRectangle(blackPen, eighthTurn);
+                e.Graphics.DrawRectangle(blackPen, ninethTurn);
+                e.Graphics.DrawRectangle(blackPen, tenthTurn);
+                e.Graphics.DrawRectangle(blackPen, eleventhTurn);
+                e.Graphics.DrawRectangle(blackPen, twelvethTurn);
+                e.Graphics.DrawRectangle(blackPen, thirteenthTurn);
+                e.Graphics.DrawRectangle(blackPen, fourteenthTurn);
+                e.Graphics.DrawRectangle(blackPen, fifteenthTurn);
+                e.Graphics.DrawRectangle(blackPen, sixteenthTurn);
 
                 e.Graphics.DrawRectangle(blackPen, 0, 75, 100, 375);
 
