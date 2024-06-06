@@ -39,10 +39,12 @@
             this.menuTimer = new System.Windows.Forms.Timer(this.components);
             this.moneyLabel = new System.Windows.Forms.Label();
             this.livesLabel = new System.Windows.Forms.Label();
+            this.robotTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // gameTimer
             // 
+            this.gameTimer.Enabled = true;
             this.gameTimer.Interval = 20;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
@@ -175,6 +177,12 @@
             this.livesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.livesLabel.Visible = false;
             // 
+            // robotTimer
+            // 
+            this.robotTimer.Enabled = true;
+            this.robotTimer.Interval = 400;
+            this.robotTimer.Tick += new System.EventHandler(this.robotTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +217,7 @@
         private System.Windows.Forms.Timer menuTimer;
         private System.Windows.Forms.Label moneyLabel;
         private System.Windows.Forms.Label livesLabel;
+        private System.Windows.Forms.Timer robotTimer;
     }
 }
 

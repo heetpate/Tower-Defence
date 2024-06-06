@@ -35,16 +35,28 @@ namespace Tower_Defence
         //string[] waves = new string[14];
         //string[1] = "Wave 1"
 
+        List <Rectangle> smallRobots = new List<Rectangle>();
+
         int screen = 2;
         int time = 600;
         int loadingBar;
 
+        int smallBots = 2;
+        int smallBotSpeedX = 5;
+        int smallBotSpeedY = 10;
+
+        int medBots = 0;
+        int largeBots = 0;
+
         int lives;
         int money;
+
+        int collisons = 0;
 
         Pen blackPen = new Pen(Color.Black, 3);
         SolidBrush redBrush = new SolidBrush(Color.Red);
         SolidBrush brownBrush = new SolidBrush(Color.Peru);
+        SolidBrush blackBrush = new SolidBrush(Color.Black);
 
         Random randGen = new Random();
 
@@ -73,31 +85,33 @@ namespace Tower_Defence
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            //Check to see if user has grabbed tower
+           
 
-            //Check to see if any towers have been upgraded
+                //Check to see if user has grabbed tower
 
-            //Check to see if any towers have been sold
+                //Check to see if any towers have been upgraded
 
-            //Check to see if it is time to shoot
+                //Check to see if any towers have been sold
 
-            //Check to see if there is a bullet on the screen
+                //Check to see if it is time to shoot
 
-            //Check to see if there are any bullets off the screen
+                //Check to see if there is a bullet on the screen
 
-            //Check to see if the robots have been shot
+                //Check to see if there are any bullets off the screen
 
-            //Check to see if the robots have been killed
+                //Check to see if the robots have been shot
 
-            //Check to see if any robots made it to the end of the path
+                //Check to see if the robots have been killed
 
-            //Are there any lives left
+                //Check to see if any robots made it to the end of the path
 
-            //Check to see if the wave is completed
+                //Are there any lives left
 
-            //Check to see if all the waves have been completed
+                //Check to see if the wave is completed
 
-            Refresh();
+                //Check to see if all the waves have been completed
+
+                Refresh();
         }
         public void towerGrabbed()
         {
@@ -239,23 +253,11 @@ namespace Tower_Defence
                 e.Graphics.FillRectangle(brownBrush, 145, 320, 105, 30);
                 e.Graphics.FillRectangle(brownBrush, 145, 320, 30, 155);
 
-                e.Graphics.DrawRectangle(blackPen, firstTurn);
-                e.Graphics.DrawRectangle(blackPen, secondTurn);
-                e.Graphics.DrawRectangle(blackPen, thirdTurn);
-                e.Graphics.DrawRectangle(blackPen, fourthTurn);
-                e.Graphics.DrawRectangle(blackPen, fifthTurn);
-                e.Graphics.DrawRectangle(blackPen, sixthTurn);
-                e.Graphics.DrawRectangle(blackPen, seventhTurn);
-                e.Graphics.DrawRectangle(blackPen, eighthTurn);
-                e.Graphics.DrawRectangle(blackPen, ninethTurn);
-                e.Graphics.DrawRectangle(blackPen, tenthTurn);
-                e.Graphics.DrawRectangle(blackPen, eleventhTurn);
-                e.Graphics.DrawRectangle(blackPen, twelvethTurn);
-                e.Graphics.DrawRectangle(blackPen, thirteenthTurn);
-                e.Graphics.DrawRectangle(blackPen, fourteenthTurn);
-                e.Graphics.DrawRectangle(blackPen, fifteenthTurn);
-                e.Graphics.DrawRectangle(blackPen, sixteenthTurn);
-
+                for (int i = 0; i < smallRobots.Count(); i++)
+                {
+                    e.Graphics.FillRectangle(blackBrush, smallRobots[i]);
+                }
+               
                 e.Graphics.DrawRectangle(blackPen, 0, 75, 100, 375);
 
 
@@ -322,6 +324,8 @@ namespace Tower_Defence
             lives = 200;
             money = 1200;
             screen = 2;
+
+            gameTimer.Enabled = true;
         }
 
         private void mediumButton_Click(object sender, EventArgs e)
@@ -329,6 +333,8 @@ namespace Tower_Defence
             lives = 150;
             money = 1000;
             screen = 2;
+
+            gameTimer.Enabled = true;
         }
 
         private void hardButton_Click(object sender, EventArgs e)
@@ -336,6 +342,8 @@ namespace Tower_Defence
             lives = 100;
             money = 800;
             screen = 2;
+
+            gameTimer.Enabled = true;
         }
 
         private void insaneButton_Click(object sender, EventArgs e)
@@ -343,8 +351,33 @@ namespace Tower_Defence
             lives = 1;
             money = 600;
             screen = 2;
+
+            gameTimer.Enabled = true;
         }
 
-        
+        private void robotTimer_Tick(object sender, EventArgs e)
+        {
+            //Move Robots
+            for (int i = 0; i < smallRobots.Count(); i++)
+            {
+                if (collisons == 0)
+                // (uf sRD[i] == "down")
+                {
+                    int y = smallRobots[i].Y + smallBotSpeedY;
+                    smallRobots[i] = new Rectangle(685, y, 10, 10);
+                }
+            }
+            //Create Robots
+            
+            if (smallBots > 0)
+            {
+                Rectangle smallB = new Rectangle(685, 0, 10, 10);
+
+                smallRobots.Add(smallB);
+                //sRD.Add("down");
+                smallBots--;
+                
+            }
+        }
     }
 }
