@@ -180,7 +180,7 @@
             // robotTimer
             // 
             this.robotTimer.Enabled = true;
-            this.robotTimer.Interval = 400;
+            this.robotTimer.Interval = 20;
             this.robotTimer.Tick += new System.EventHandler(this.robotTimer_Tick);
             // 
             // Form1

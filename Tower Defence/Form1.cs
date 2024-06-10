@@ -15,35 +15,37 @@ namespace Tower_Defence
     public partial class Form1 : Form
     {
 
-        Rectangle firstTurn = new Rectangle(675, 195, 30, 30);
-        Rectangle secondTurn = new Rectangle(500, 170, 30, 30);
-        Rectangle thirdTurn = new Rectangle(525, 75, 30, 30);
-        Rectangle fourthTurn = new Rectangle(120, 100, 30, 30);
-        Rectangle fifthTurn = new Rectangle(145, 275, 30, 30);
-        Rectangle sixthTurn = new Rectangle(250, 250, 30, 30);
-        Rectangle seventhTurn = new Rectangle(225, 155, 30, 30);
-        Rectangle eighthTurn = new Rectangle(350, 180, 30, 30);
-        Rectangle ninethTurn = new Rectangle(325, 320, 30, 30);
-        Rectangle tenthTurn = new Rectangle(550, 295, 30, 30);
-        Rectangle eleventhTurn = new Rectangle(525, 220, 30, 30);
-        Rectangle twelvethTurn = new Rectangle(740, 245, 30, 30);
-        Rectangle thirteenthTurn = new Rectangle(715, 405, 30, 30);
-        Rectangle fourteenthTurn = new Rectangle(225, 380, 30, 30);
-        Rectangle fifteenthTurn = new Rectangle(250, 295, 30, 30);
-        Rectangle sixteenthTurn = new Rectangle(120, 320, 30, 30);
+        Rectangle firstTurn = new Rectangle(675, 185, 30, 30);
+        Rectangle secondTurn = new Rectangle(510, 170, 30, 30);
+        Rectangle thirdTurn = new Rectangle(525, 85, 30, 30);
+        Rectangle fourthTurn = new Rectangle(130, 100, 30, 30);
+        Rectangle fifthTurn = new Rectangle(145, 265, 30, 30);
+        Rectangle sixthTurn = new Rectangle(240, 250, 30, 30);
+        Rectangle seventhTurn = new Rectangle(225, 165, 30, 30);
+        Rectangle eighthTurn = new Rectangle(340, 180, 30, 30);
+        Rectangle ninethTurn = new Rectangle(325, 310, 30, 30);
+        Rectangle tenthTurn = new Rectangle(540, 295, 30, 30);
+        Rectangle eleventhTurn = new Rectangle(525, 230, 30, 30);
+        Rectangle twelvethTurn = new Rectangle(730, 245, 30, 30);
+        Rectangle thirteenthTurn = new Rectangle(715, 395, 30, 30);
+        Rectangle fourteenthTurn = new Rectangle(235, 380, 30, 30);
+        Rectangle fifteenthTurn = new Rectangle(250, 305, 30, 30);
+        Rectangle sixteenthTurn = new Rectangle(130, 320, 30, 30);
+        Rectangle end = new Rectangle(100, 475, 100, 20);
 
         //string[] waves = new string[14];
         //string[1] = "Wave 1"
 
-        List <Rectangle> smallRobots = new List<Rectangle>();
+        List<Rectangle> smallRobots = new List<Rectangle>();
+        List<String> sRD = new List<string>();
 
         int screen = 2;
         int time = 600;
         int loadingBar;
 
-        int smallBots = 2;
+        int smallBots = 10;
         int smallBotSpeedX = 5;
-        int smallBotSpeedY = 10;
+        int smallBotSpeedY = 5;
 
         int medBots = 0;
         int largeBots = 0;
@@ -51,7 +53,10 @@ namespace Tower_Defence
         int lives;
         int money;
 
+        int counter = 0;
+
         int collisons = 0;
+        bool firstBot = true;
 
         Pen blackPen = new Pen(Color.Black, 3);
         SolidBrush redBrush = new SolidBrush(Color.Red);
@@ -85,33 +90,33 @@ namespace Tower_Defence
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-           
 
-                //Check to see if user has grabbed tower
 
-                //Check to see if any towers have been upgraded
+            //Check to see if user has grabbed tower
 
-                //Check to see if any towers have been sold
+            //Check to see if any towers have been upgraded
 
-                //Check to see if it is time to shoot
+            //Check to see if any towers have been sold
 
-                //Check to see if there is a bullet on the screen
+            //Check to see if it is time to shoot
 
-                //Check to see if there are any bullets off the screen
+            //Check to see if there is a bullet on the screen
 
-                //Check to see if the robots have been shot
+            //Check to see if there are any bullets off the screen
 
-                //Check to see if the robots have been killed
+            //Check to see if the robots have been shot
 
-                //Check to see if any robots made it to the end of the path
+            //Check to see if the robots have been killed
 
-                //Are there any lives left
+            //Check to see if any robots made it to the end of the path
 
-                //Check to see if the wave is completed
+            //Are there any lives left
 
-                //Check to see if all the waves have been completed
+            //Check to see if the wave is completed
 
-                Refresh();
+            //Check to see if all the waves have been completed
+
+            Refresh();
         }
         public void towerGrabbed()
         {
@@ -203,7 +208,7 @@ namespace Tower_Defence
                 }
                 else
                 {
-                    
+
                     Thread.Sleep(500);
                     e.Graphics.Clear(Color.White);
                     screen = 1;
@@ -257,7 +262,7 @@ namespace Tower_Defence
                 {
                     e.Graphics.FillRectangle(blackBrush, smallRobots[i]);
                 }
-               
+
                 e.Graphics.DrawRectangle(blackPen, 0, 75, 100, 375);
 
 
@@ -360,24 +365,134 @@ namespace Tower_Defence
             //Move Robots
             for (int i = 0; i < smallRobots.Count(); i++)
             {
-                if (collisons == 0)
-                // (uf sRD[i] == "down")
+                if (firstBot == true)
                 {
                     int y = smallRobots[i].Y + smallBotSpeedY;
-                    smallRobots[i] = new Rectangle(685, y, 10, 10);
+                    int x = smallRobots[i].X;
+                    smallRobots[i] = new Rectangle(x, y, 10, 10);
+                    firstBot = false;
                 }
+
+                switch (collisons)
+                {
+                    case 0:
+                        sRD.Add("down");
+                        break;
+
+                }
+                if (firstBot == false)
+                {
+                    if (sRD[i] == "down")
+                    {
+                        int x = smallRobots[i].X;
+                        int y = smallRobots[i].Y + smallBotSpeedY;
+                        smallRobots[i] = new Rectangle(x, y, 10, 10); 
+                    }
+                    if (sRD[i] == "left")
+                    {
+                        int y = smallRobots[i].Y;
+                        int x = smallRobots[i].X - smallBotSpeedX;
+                        smallRobots[i] = new Rectangle(x, y, 10, 10);
+                    }
+                    if (sRD[i] == "up")
+                    {
+                        int x = smallRobots[i].X;
+                        int y = smallRobots[i].Y - smallBotSpeedY;
+                        smallRobots[i] = new Rectangle(x, y, 10, 10);
+                    }
+                    if (sRD[i] == "right")
+                    {
+                        int x = smallRobots[i].X + smallBotSpeedX;
+                        int y = smallRobots[i].Y;
+                        smallRobots[i] = new Rectangle(x, y, 10, 10);
+                    }
+
+
+                    if (smallRobots[i].IntersectsWith(firstTurn))
+                    {
+                        sRD[i] = "left";
+                    }
+                    if (smallRobots[i].IntersectsWith(secondTurn))
+                    {
+                        sRD[i] = "up";
+                    }
+                    if (smallRobots[i].IntersectsWith(thirdTurn))
+                    {
+                        sRD[i] = "left";
+                    }
+                    if (smallRobots[i].IntersectsWith(fourthTurn))
+                    {
+                        sRD[i] = "down";
+                    }
+                    if (smallRobots[i].IntersectsWith(fifthTurn))
+                    {
+                        sRD[i] = "right";
+                    }
+                    if (smallRobots[i].IntersectsWith(sixthTurn))
+                    {
+                        sRD[i] = "up";
+                    }
+                    if (smallRobots[i].IntersectsWith(seventhTurn))
+                    {
+                        sRD[i] = "right";
+                    }
+                    if (smallRobots[i].IntersectsWith(eighthTurn))
+                    {
+                        sRD[i] = "down";
+                    }
+                    if (smallRobots[i].IntersectsWith(ninethTurn))
+                    {
+                        sRD[i] = "right";
+                    }
+                    if (smallRobots[i].IntersectsWith(tenthTurn))
+                    {
+                        sRD[i] = "up";
+                    }
+                    if (smallRobots[i].IntersectsWith(eleventhTurn))
+                    {
+                        sRD[i] = "right";
+                    }
+                    if (smallRobots[i].IntersectsWith(twelvethTurn))
+                    {
+                        sRD[i] = "down";
+                    }
+                    if (smallRobots[i].IntersectsWith(thirteenthTurn))
+                    {
+                        sRD[i] = "left";
+                    }
+                    if (smallRobots[i].IntersectsWith(fourteenthTurn))
+                    {
+                        sRD[i] = "up";
+                    }
+                    if (smallRobots[i].IntersectsWith(fifteenthTurn))
+                    {
+                        sRD[i] = "left";
+                    }
+                    if (smallRobots[i].IntersectsWith(sixteenthTurn))
+                    {
+                        sRD[i] = "down";
+                    }
+                    if (smallRobots[i].IntersectsWith(end))
+                    {
+                        smallRobots.RemoveAt(i);
+                        sRD.RemoveAt(i);
+                    }
+
+                }
+                Refresh();
             }
             //Create Robots
-            
-            if (smallBots > 0)
+
+            if (smallBots > 0 && counter > 4)
             {
                 Rectangle smallB = new Rectangle(685, 0, 10, 10);
-
                 smallRobots.Add(smallB);
-                //sRD.Add("down");
                 smallBots--;
-                
+                counter = 0;
             }
+
+            counter++;
         }
     }
+
 }
