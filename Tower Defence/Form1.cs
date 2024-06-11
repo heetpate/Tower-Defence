@@ -36,19 +36,25 @@ namespace Tower_Defence
         //string[] waves = new string[14];
         //string[1] = "Wave 1"
 
-        List<Rectangle> smallRobots = new List<Rectangle>();
-        List<String> sRD = new List<string>();
+        List<Rectangle> miniRobots = new List<Rectangle>();
+        List<Rectangle> sniperRobots = new List<Rectangle>();
+        List<Rectangle> largeRobots = new List<Rectangle>();
 
-        int screen = 2;
+        List<String> mRD = new List<string>();
+        List<String> sRD = new List<string>();
+        //List<String> mRD = new List<string>();
+
+        int screen = 0;
         int time = 600;
         int loadingBar;
 
-        int smallBots = 10;
-        int smallBotSpeedX = 5;
-        int smallBotSpeedY = 5;
+        int miniBots = 10;
+        int miniBotspeedX = 5;
+        int miniBotspeedY = 5;
 
-        int medBots = 0;
-        int largeBots = 0;
+        int sniperBots = 10;
+        int sniperBotspeedX = 5;
+        int sniperBotspeedY = 5;
 
         int lives;
         int money;
@@ -57,11 +63,13 @@ namespace Tower_Defence
 
         int collisons = 0;
         bool firstBot = true;
+        bool sniperFirstBot = true;
 
         Pen blackPen = new Pen(Color.Black, 3);
         SolidBrush redBrush = new SolidBrush(Color.Red);
         SolidBrush brownBrush = new SolidBrush(Color.Peru);
         SolidBrush blackBrush = new SolidBrush(Color.Black);
+        SolidBrush blueBrush = new SolidBrush(Color.Blue);
 
         Random randGen = new Random();
 
@@ -258,9 +266,13 @@ namespace Tower_Defence
                 e.Graphics.FillRectangle(brownBrush, 145, 320, 105, 30);
                 e.Graphics.FillRectangle(brownBrush, 145, 320, 30, 155);
 
-                for (int i = 0; i < smallRobots.Count(); i++)
+                for (int i = 0; i < miniRobots.Count(); i++)
                 {
-                    e.Graphics.FillRectangle(blackBrush, smallRobots[i]);
+                    e.Graphics.FillRectangle(blackBrush, miniRobots[i]);
+                }
+                for (int i = 0; i < sniperRobots.Count(); i++)
+                {
+                    e.Graphics.FillRectangle(blueBrush, sniperRobots[i]);
                 }
 
                 e.Graphics.DrawRectangle(blackPen, 0, 75, 100, 375);
@@ -362,137 +374,273 @@ namespace Tower_Defence
 
         private void robotTimer_Tick(object sender, EventArgs e)
         {
-            //Move Robots
-            for (int i = 0; i < smallRobots.Count(); i++)
+            if (screen == 2)
             {
-                if (firstBot == true)
+
+
+                //Move Small Robots
+                for (int i = 0; i < miniRobots.Count(); i++)
                 {
-                    int y = smallRobots[i].Y + smallBotSpeedY;
-                    int x = smallRobots[i].X;
-                    smallRobots[i] = new Rectangle(x, y, 10, 10);
-                    firstBot = false;
+                    if (firstBot == true)
+                    {
+                        int y = miniRobots[i].Y + miniBotspeedY;
+                        int x = miniRobots[i].X;
+                        miniRobots[i] = new Rectangle(x, y, 10, 10);
+                        firstBot = false;
+                    }
+
+                    switch (collisons)
+                    {
+                        case 0:
+                            mRD.Add("down");
+                            break;
+
+                    }
+                    if (firstBot == false)
+                    {
+                        if (mRD[i] == "down")
+                        {
+                            int x = miniRobots[i].X;
+                            int y = miniRobots[i].Y + miniBotspeedY;
+                            miniRobots[i] = new Rectangle(x, y, 10, 10);
+                        }
+                        if (mRD[i] == "left")
+                        {
+                            int y = miniRobots[i].Y;
+                            int x = miniRobots[i].X - miniBotspeedX;
+                            miniRobots[i] = new Rectangle(x, y, 10, 10);
+                        }
+                        if (mRD[i] == "up")
+                        {
+                            int x = miniRobots[i].X;
+                            int y = miniRobots[i].Y - miniBotspeedY;
+                            miniRobots[i] = new Rectangle(x, y, 10, 10);
+                        }
+                        if (mRD[i] == "right")
+                        {
+                            int x = miniRobots[i].X + miniBotspeedX;
+                            int y = miniRobots[i].Y;
+                            miniRobots[i] = new Rectangle(x, y, 10, 10);
+                        }
+
+
+                        if (miniRobots[i].IntersectsWith(firstTurn))
+                        {
+                            mRD[i] = "left";
+                        }
+                        if (miniRobots[i].IntersectsWith(secondTurn))
+                        {
+                            mRD[i] = "up";
+                        }
+                        if (miniRobots[i].IntersectsWith(thirdTurn))
+                        {
+                            mRD[i] = "left";
+                        }
+                        if (miniRobots[i].IntersectsWith(fourthTurn))
+                        {
+                            mRD[i] = "down";
+                        }
+                        if (miniRobots[i].IntersectsWith(fifthTurn))
+                        {
+                            mRD[i] = "right";
+                        }
+                        if (miniRobots[i].IntersectsWith(sixthTurn))
+                        {
+                            mRD[i] = "up";
+                        }
+                        if (miniRobots[i].IntersectsWith(seventhTurn))
+                        {
+                            mRD[i] = "right";
+                        }
+                        if (miniRobots[i].IntersectsWith(eighthTurn))
+                        {
+                            mRD[i] = "down";
+                        }
+                        if (miniRobots[i].IntersectsWith(ninethTurn))
+                        {
+                            mRD[i] = "right";
+                        }
+                        if (miniRobots[i].IntersectsWith(tenthTurn))
+                        {
+                            mRD[i] = "up";
+                        }
+                        if (miniRobots[i].IntersectsWith(eleventhTurn))
+                        {
+                            mRD[i] = "right";
+                        }
+                        if (miniRobots[i].IntersectsWith(twelvethTurn))
+                        {
+                            mRD[i] = "down";
+                        }
+                        if (miniRobots[i].IntersectsWith(thirteenthTurn))
+                        {
+                            mRD[i] = "left";
+                        }
+                        if (miniRobots[i].IntersectsWith(fourteenthTurn))
+                        {
+                            mRD[i] = "up";
+                        }
+                        if (miniRobots[i].IntersectsWith(fifteenthTurn))
+                        {
+                            mRD[i] = "left";
+                        }
+                        if (miniRobots[i].IntersectsWith(sixteenthTurn))
+                        {
+                            mRD[i] = "down";
+                        }
+                        if (miniRobots[i].IntersectsWith(end))
+                        {
+                            lives = lives - 2;
+                            livesLabel.Text = $"{lives}";
+                            miniRobots.RemoveAt(i);
+                            mRD.RemoveAt(i);
+                        }
+
+                    }
+                    Refresh();
                 }
 
-                switch (collisons)
+                for (int i = 0; i < sniperRobots.Count(); i++)
                 {
-                    case 0:
-                        sRD.Add("down");
-                        break;
+                    if (sniperFirstBot == true)
+                    {
+                        int y = sniperRobots[i].Y + sniperBotspeedY;
+                        int x = sniperRobots[i].X;
+                        sniperRobots[i] = new Rectangle(x, y, 10, 10);
+                        sniperFirstBot = false;
+                    }
 
+                    switch (collisons)
+                    {
+                        case 0:
+                            sRD.Add("down");
+                            break;
+
+                    }
+                    if (firstBot == false)
+                    {
+                        if (sRD[i] == "down")
+                        {
+                            int x = sniperRobots[i].X;
+                            int y = sniperRobots[i].Y + sniperBotspeedY;
+                            miniRobots[i] = new Rectangle(x, y, 10, 10);
+                        }
+                        if (sRD[i] == "left")
+                        {
+                            int y = sniperRobots[i].Y;
+                            int x = sniperRobots[i].X - sniperBotspeedX;
+                            sniperRobots[i] = new Rectangle(x, y, 10, 10);
+                        }
+                        if (sRD[i] == "up")
+                        {
+                            int x = sniperRobots[i].X;
+                            int y = sniperRobots[i].Y - sniperBotspeedY;
+                            sniperRobots[i] = new Rectangle(x, y, 10, 10);
+                        }
+                        if (sRD[i] == "right")
+                        {
+                            int x = sniperRobots[i].X + sniperBotspeedX;
+                            int y = sniperRobots[i].Y;
+                            miniRobots[i] = new Rectangle(x, y, 10, 10);
+                        }
+
+
+                        if (sniperRobots[i].IntersectsWith(firstTurn))
+                        {
+                            sRD[i] = "left";
+                        }
+                        if (sniperRobots[i].IntersectsWith(secondTurn))
+                        {
+                            sRD[i] = "up";
+                        }
+                        if (sniperRobots[i].IntersectsWith(thirdTurn))
+                        {
+                            sRD[i] = "left";
+                        }
+                        if (sniperRobots[i].IntersectsWith(fourthTurn))
+                        {
+                            sRD[i] = "down";
+                        }
+                        if (sniperRobots[i].IntersectsWith(fifthTurn))
+                        {
+                            sRD[i] = "right";
+                        }
+                        if (sniperRobots[i].IntersectsWith(sixthTurn))
+                        {
+                            sRD[i] = "up";
+                        }
+                        if (sniperRobots[i].IntersectsWith(seventhTurn))
+                        {
+                            sRD[i] = "right";
+                        }
+                        if (sniperRobots[i].IntersectsWith(eighthTurn))
+                        {
+                            sRD[i] = "down";
+                        }
+                        if (sniperRobots[i].IntersectsWith(ninethTurn))
+                        {
+                            sRD[i] = "right";
+                        }
+                        if (sniperRobots[i].IntersectsWith(tenthTurn))
+                        {
+                            sRD[i] = "up";
+                        }
+                        if (sniperRobots[i].IntersectsWith(eleventhTurn))
+                        {
+                            sRD[i] = "right";
+                        }
+                        if (sniperRobots[i].IntersectsWith(twelvethTurn))
+                        {
+                            sRD[i] = "down";
+                        }
+                        if (sniperRobots[i].IntersectsWith(thirteenthTurn))
+                        {
+                            sRD[i] = "left";
+                        }
+                        if (sniperRobots[i].IntersectsWith(fourteenthTurn))
+                        {
+                            sRD[i] = "up";
+                        }
+                        if (sniperRobots[i].IntersectsWith(fifteenthTurn))
+                        {
+                            sRD[i] = "left";
+                        }
+                        if (sniperRobots[i].IntersectsWith(sixteenthTurn))
+                        {
+                            sRD[i] = "down";
+                        }
+                        if (sniperRobots[i].IntersectsWith(end))
+                        {
+                            lives = lives - 3;
+                            livesLabel.Text = $"{lives}";
+                            sniperRobots.RemoveAt(i);
+                            sRD.RemoveAt(i);
+                        }
+
+                    }
+                    Refresh();
                 }
-                if (firstBot == false)
+                //Create Robots
+
+                if (sniperBots > 0 && miniBots == 0 && counter > 6)
                 {
-                    if (sRD[i] == "down")
-                    {
-                        int x = smallRobots[i].X;
-                        int y = smallRobots[i].Y + smallBotSpeedY;
-                        smallRobots[i] = new Rectangle(x, y, 10, 10); 
-                    }
-                    if (sRD[i] == "left")
-                    {
-                        int y = smallRobots[i].Y;
-                        int x = smallRobots[i].X - smallBotSpeedX;
-                        smallRobots[i] = new Rectangle(x, y, 10, 10);
-                    }
-                    if (sRD[i] == "up")
-                    {
-                        int x = smallRobots[i].X;
-                        int y = smallRobots[i].Y - smallBotSpeedY;
-                        smallRobots[i] = new Rectangle(x, y, 10, 10);
-                    }
-                    if (sRD[i] == "right")
-                    {
-                        int x = smallRobots[i].X + smallBotSpeedX;
-                        int y = smallRobots[i].Y;
-                        smallRobots[i] = new Rectangle(x, y, 10, 10);
-                    }
-
-
-                    if (smallRobots[i].IntersectsWith(firstTurn))
-                    {
-                        sRD[i] = "left";
-                    }
-                    if (smallRobots[i].IntersectsWith(secondTurn))
-                    {
-                        sRD[i] = "up";
-                    }
-                    if (smallRobots[i].IntersectsWith(thirdTurn))
-                    {
-                        sRD[i] = "left";
-                    }
-                    if (smallRobots[i].IntersectsWith(fourthTurn))
-                    {
-                        sRD[i] = "down";
-                    }
-                    if (smallRobots[i].IntersectsWith(fifthTurn))
-                    {
-                        sRD[i] = "right";
-                    }
-                    if (smallRobots[i].IntersectsWith(sixthTurn))
-                    {
-                        sRD[i] = "up";
-                    }
-                    if (smallRobots[i].IntersectsWith(seventhTurn))
-                    {
-                        sRD[i] = "right";
-                    }
-                    if (smallRobots[i].IntersectsWith(eighthTurn))
-                    {
-                        sRD[i] = "down";
-                    }
-                    if (smallRobots[i].IntersectsWith(ninethTurn))
-                    {
-                        sRD[i] = "right";
-                    }
-                    if (smallRobots[i].IntersectsWith(tenthTurn))
-                    {
-                        sRD[i] = "up";
-                    }
-                    if (smallRobots[i].IntersectsWith(eleventhTurn))
-                    {
-                        sRD[i] = "right";
-                    }
-                    if (smallRobots[i].IntersectsWith(twelvethTurn))
-                    {
-                        sRD[i] = "down";
-                    }
-                    if (smallRobots[i].IntersectsWith(thirteenthTurn))
-                    {
-                        sRD[i] = "left";
-                    }
-                    if (smallRobots[i].IntersectsWith(fourteenthTurn))
-                    {
-                        sRD[i] = "up";
-                    }
-                    if (smallRobots[i].IntersectsWith(fifteenthTurn))
-                    {
-                        sRD[i] = "left";
-                    }
-                    if (smallRobots[i].IntersectsWith(sixteenthTurn))
-                    {
-                        sRD[i] = "down";
-                    }
-                    if (smallRobots[i].IntersectsWith(end))
-                    {
-                        smallRobots.RemoveAt(i);
-                        sRD.RemoveAt(i);
-                    }
-
+                    Rectangle sniperB = new Rectangle(685, 0, 10, 10);
+                    sniperRobots.Add(sniperB);
+                    sniperBots--;
+                    counter = 0;
                 }
-                Refresh();
+                if (miniBots > 0 && counter > 4)
+                {
+                    Rectangle miniB = new Rectangle(685, 0, 10, 10);
+                    miniRobots.Add(miniB);
+                    miniBots--;
+                    counter = 0;
+                }
+
+                counter++;
             }
-            //Create Robots
-
-            if (smallBots > 0 && counter > 4)
-            {
-                Rectangle smallB = new Rectangle(685, 0, 10, 10);
-                smallRobots.Add(smallB);
-                smallBots--;
-                counter = 0;
-            }
-
-            counter++;
         }
+
     }
 
 }
