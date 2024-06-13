@@ -36,7 +36,6 @@
             this.hardButton = new System.Windows.Forms.Button();
             this.insaneButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
-            this.menuTimer = new System.Windows.Forms.Timer(this.components);
             this.moneyLabel = new System.Windows.Forms.Label();
             this.livesLabel = new System.Windows.Forms.Label();
             this.robotTimer = new System.Windows.Forms.Timer(this.components);
@@ -145,12 +144,6 @@
             this.exitButton.MouseLeave += new System.EventHandler(this.exitButton_MouseLeave);
             this.exitButton.MouseHover += new System.EventHandler(this.exitButton_MouseHover);
             // 
-            // menuTimer
-            // 
-            this.menuTimer.Enabled = true;
-            this.menuTimer.Interval = 10;
-            this.menuTimer.Tick += new System.EventHandler(this.menuTimer_Tick);
-            // 
             // moneyLabel
             // 
             this.moneyLabel.BackColor = System.Drawing.Color.Transparent;
@@ -214,7 +207,6 @@
         private System.Windows.Forms.Button hardButton;
         private System.Windows.Forms.Button insaneButton;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Timer menuTimer;
         private System.Windows.Forms.Label moneyLabel;
         private System.Windows.Forms.Label livesLabel;
         private System.Windows.Forms.Timer robotTimer;
