@@ -39,6 +39,7 @@
             this.moneyLabel = new System.Windows.Forms.Label();
             this.livesLabel = new System.Windows.Forms.Label();
             this.robotTimer = new System.Windows.Forms.Timer(this.components);
+            this.waveLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -176,11 +177,25 @@
             this.robotTimer.Interval = 20;
             this.robotTimer.Tick += new System.EventHandler(this.robotTimer_Tick);
             // 
+            // waveLabel
+            // 
+            this.waveLabel.BackColor = System.Drawing.Color.Transparent;
+            this.waveLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.waveLabel.ForeColor = System.Drawing.Color.Black;
+            this.waveLabel.Location = new System.Drawing.Point(349, 5);
+            this.waveLabel.Name = "waveLabel";
+            this.waveLabel.Size = new System.Drawing.Size(304, 47);
+            this.waveLabel.TabIndex = 8;
+            this.waveLabel.Text = "Wave : 1";
+            this.waveLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.waveLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 475);
+            this.Controls.Add(this.waveLabel);
             this.Controls.Add(this.livesLabel);
             this.Controls.Add(this.moneyLabel);
             this.Controls.Add(this.exitButton);
@@ -210,6 +225,7 @@
         private System.Windows.Forms.Label moneyLabel;
         private System.Windows.Forms.Label livesLabel;
         private System.Windows.Forms.Timer robotTimer;
+        private System.Windows.Forms.Label waveLabel;
     }
 }
 

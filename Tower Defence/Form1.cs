@@ -53,33 +53,33 @@ namespace Tower_Defence
         int loadingBar;
 
         int miniBots = 10;
-        int miniBotspeedX = 8;
-        int miniBotspeedY = 8;
+        int miniBotspeedX = 9;
+        int miniBotspeedY = 9;
 
         int sniperBots = 10;
-        int sniperBotspeedX = 6;
-        int sniperBotspeedY = 6;
+        int sniperBotspeedX = 8;
+        int sniperBotspeedY = 8;
 
         int finalSniperBots = 10;
-        int finalSniperBotspeedX = 5;
-        int finalSniperBotspeedY = 5;
+        int finalSniperBotspeedX = 7;
+        int finalSniperBotspeedY = 7;
 
         int bigMeleeBots = 10;
-        int bigMeleeBotspeedX = 4;
-        int bigMeleeBotspeedY = 4;
+        int bigMeleeBotspeedX = 6;
+        int bigMeleeBotspeedY = 6;
 
         int bossBots = 10;
-        int bossBotspeedX = 7;
-        int bossBotspeedY = 7;
+        int bossBotspeedX = 8;
+        int bossBotspeedY = 8;
 
         int finalBossBots = 10;
-        int finalBossBotspeedX = 3;
-        int finalBossBotspeedY = 3;
+        int finalBossBotspeedX = 6;
+        int finalBossBotspeedY = 6;
 
-        int lives;
+        int lives = 1;
         int money;
 
-        int wave = 12;
+        int wave = 1;
 
         bool waveSpawned = false;
         int counter = 0;
@@ -123,13 +123,24 @@ namespace Tower_Defence
 
             //Check to see if the robots have been killed
 
-            //Check to see if any robots made it to the end of the path
-
             //Are there any lives left
+            if (lives <= 0)
+            {
 
+            }
             //Check to see if the wave is completed
-
+            if (counter > 200 && waveSpawned == true && miniRobots.Count() == 0 && sniperRobots.Count() == 0 && finalSniperRobots.Count() == 0 && bigMeleeRobots.Count() == 0 && bossRobots.Count() == 0 && finalBossRobots.Count() == 0)
+            {
+                waveSpawned = false;
+                counter = 0;
+                waveLabel.Text = $"Wave : {wave}";
+            }
             //Check to see if all the waves have been completed
+            if (wave >= 15)
+            {
+                
+            }
+
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -201,6 +212,7 @@ namespace Tower_Defence
                 titleLabel.Visible = false;
                 livesLabel.Visible = true;
                 moneyLabel.Visible = true;
+                waveLabel.Visible = true;
 
                 livesLabel.Text = $"Lives : {lives}";
                 moneyLabel.Text = $"Money : {money}";
@@ -982,6 +994,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 2 && waveSpawned == false)
                 {
@@ -992,6 +1005,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 3 && waveSpawned == false)
                 {
@@ -1002,6 +1016,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 4 && waveSpawned == false)
                 {
@@ -1012,6 +1027,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 5 && waveSpawned == false)
                 {
@@ -1022,6 +1038,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 6 && waveSpawned == false)
                 {
@@ -1032,6 +1049,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 7 && waveSpawned == false)
                 {
@@ -1042,6 +1060,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 8 && waveSpawned == false)
                 {
@@ -1052,6 +1071,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 9 && waveSpawned == false)
                 {
@@ -1062,6 +1082,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 10 && waveSpawned == false)
                 {
@@ -1072,6 +1093,7 @@ namespace Tower_Defence
                     bossBots = 4;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 11 && waveSpawned == false)
                 {
@@ -1082,6 +1104,7 @@ namespace Tower_Defence
                     bossBots = 10;
                     finalBossBots = 0;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 12 && waveSpawned == false)
                 {
@@ -1092,6 +1115,7 @@ namespace Tower_Defence
                     bossBots = 8;
                     finalBossBots = 2;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 13 && waveSpawned == false)
                 {
@@ -1102,6 +1126,7 @@ namespace Tower_Defence
                     bossBots = 6;
                     finalBossBots = 6;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 14 && waveSpawned == false)
                 {
@@ -1112,6 +1137,7 @@ namespace Tower_Defence
                     bossBots = 0;
                     finalBossBots = 12;
                     waveSpawned = true;
+                    wave++;
                 }
                 else if (wave == 15 && waveSpawned == false)
                 {
@@ -1122,8 +1148,9 @@ namespace Tower_Defence
                     bossBots = 10;
                     finalBossBots = 10;
                     waveSpawned = true;
+                    wave++;
                 }
-#endregion
+                #endregion
 
                 #region Create Robots
                 //Create Robots
